@@ -143,7 +143,7 @@ function verifyTypeScriptSetup() {
       reason: 'to match webpack resolution',
     },
     resolveJsonModule: { value: true, reason: 'to match webpack loader' },
-    isolatedModules: { value: true, reason: 'implementation limitation' },
+    isolatedModules: { value: false, reason: 'implementation limitation' },
     noEmit: { value: true },
     jsx: {
       parsedValue:
@@ -221,7 +221,9 @@ function verifyTypeScriptSetup() {
   } else {
     // This is bug fix code of https://github.com/facebook/create-react-app/issues/9868
     // Bellow code release variable from non-extensible and freeze status.
-    appTsConfig.compilerOptions = JSON.parse(JSON.stringify(appTsConfig.compilerOptions));
+    appTsConfig.compilerOptions = JSON.parse(
+      JSON.stringify(appTsConfig.compilerOptions)
+    );
 
     // Original appTsConfig.compilerOptions status
     // Object.isExtensible(appTsConfig.compilerOptions) output: false

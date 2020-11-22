@@ -158,9 +158,7 @@ module.exports = function (webpackEnv) {
           loader: require.resolve(preProcessor),
           options: {
             sourceMap: true,
-            prependData: `
-              @import './src/sass/_main.scss';
-            `,
+            prependData: JSON.parse(process.env.SASS_PREPEND_DATA).join(''),
           },
         }
       );
